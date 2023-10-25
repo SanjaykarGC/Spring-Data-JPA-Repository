@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+   <style>
+
+    body{
+        font-family: cursive;
+    }
+        div{
+    align-items: center;
+}
+
+h1{
+    color: #ff9345;
+    font-style:normal ;
+}
+h5{
+    color: #fff;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+    align-items: center;
+    background-image: url('./output.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:center;
+    padding: 20px;
+}
+
+section {
+    align-items: center;
+}
+
+a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            margin-bottom: 50px;
+        }
+        .user-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .user-card-title {
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="user-section" id="button">
+        <a class="btn btn-success" th:href="@{/add_user}">Add New User</a>
+    </div>
+    <div class="row">
+        <section th:each="user: ${users}" class="col-md-6">
+                <div class="card-body">
+                    <h1 class="card-title user-card-title">User Details</h1>
+                    <h5 class="card-text">Name: [[${user.name}]]</h5> 
+                    <h5 class="card-text">Age: [[${user.age}]]</h5> 
+                    <h5 class="card-text">Email:[[${user.email}]]</h5>
+                    <h5 class="card-text">Gender: [[${user.gender}]]</h5>
+                    <h5 class="card-text">Phone: [[${user.phoneNumber}]]</h5>
+                    <a class="btn btn-danger" th:href="@{'delete/user' + ${user.id}}">Delete User</a>
+                    <a class="btn btn-info" th:href="@{'update/user' + ${user.id}}">Update User</a>
+                </div>
+        
+        </section>
+    </div>
+</div>
+</body>
+</html>
